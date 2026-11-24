@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NU Scholarship | บัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร</title>
+  <meta name="description" content="รวมประกาศทุนการศึกษา ทุนวิจัย ประชุมวิชาการ และแลกเปลี่ยนนิสิต มหาวิทยาลัยนเรศวร">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="NU Scholarship หน้าแรก">
+      <img src="assets/nu-logo.png" alt="" width="44" height="44">
+      <span class="brand-text">
+        <strong>NU Scholarship</strong>
+        <small>บัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร</small>
+      </span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">เมนู</button>
+
+    <nav class="main-nav" id="mainNav" aria-label="เมนูหลัก">
+      <a href="#list" data-cat="scholarship">ทุนการศึกษา</a>
+      <a href="#list" data-cat="research">ทุนวิจัย</a>
+      <a href="#list" data-cat="conference">ประชุมวิชาการ</a>
+      <a href="#list" data-cat="exchange">แลกเปลี่ยนนิสิต</a>
+      <a href="#list" data-cat="announcement">ประกาศ</a>
+      <a href="#list" data-cat="documents">เอกสาร</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-content wrap">
+      <h1 id="heroTitle">ทุนและโอกาสทางวิชาการ<br>สำหรับนิสิตบัณฑิตศึกษา</h1>
+      <p>รวมประกาศทุนการศึกษา ทุนวิจัย ประชุมวิชาการ และโครงการแลกเปลี่ยน ไว้ในที่เดียว</p>
+      <form class="hero-search" id="heroSearch" role="search">
+        <label class="sr-only" for="searchInput">ค้นหาทุนหรือประกาศ</label>
+        <input id="searchInput" type="search" placeholder="ค้นหา เช่น ทุนวิทยานิพนธ์, Inbound, แบบฟอร์ม" autocomplete="off">
+        <button type="submit">ค้นหา</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap listing" id="list" aria-labelledby="listTitle">
+    <aside class="filters" aria-label="เลือกหมวดหมู่">
+      <h2 class="filters-title">หมวดหมู่</h2>
+      <div class="filter-list" id="filters" role="group"></div>
+
+      <h2 class="filters-title links-title">ลิงก์ที่ใช้บ่อย</h2>
+      <ul class="quick-links">
+        <li><a href="https://www.nuscholarship.nu.ac.th/page-table2/" target="_blank" rel="noopener">รายการทุนและประกาศทั้งหมด</a></li>
+        <li><a href="https://www.nuscholarship.nu.ac.th/" target="_blank" rel="noopener">เว็บไซต์ NU Scholarship ต้นฉบับ</a></li>
+        <li><a href="https://www.graduate.nu.ac.th/th/content-pages/form-download" target="_blank" rel="noopener">แบบฟอร์มดาวน์โหลด</a></li>
+        <li><a href="https://www.graduate.nu.ac.th/th/content-pages/contentcalenda" target="_blank" rel="noopener">ปฏิทินการศึกษา</a></li>
+        <li><a href="https://www.graduate.nu.ac.th/th" target="_blank" rel="noopener">เว็บไซต์บัณฑิตวิทยาลัย</a></li>
+      </ul>
+    </aside>
+
+    <div class="results">
+      <div class="results-head">
+        <h2 id="listTitle">ประกาศล่าสุด</h2>
+        <p id="resultCount" aria-live="polite"></p>
+      </div>
+      <div class="rows" id="cards"></div>
+      <p class="note">รายการนี้เป็นข้อมูลสรุปเพื่อค้นหาเบื้องต้น วันรับสมัครและเงื่อนไขอาจเปลี่ยนแปลง กรุณาอ่านประกาศฉบับเต็มจากเว็บไซต์ต้นทางก่อนสมัคร</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>
+      <strong>NU Scholarship</strong>
+      <p>บัณฑิตวิทยาลัย มหาวิทยาลัยนเรศวร<br>99 หมู่ 9 ต.ท่าโพธิ์ อ.เมือง จ.พิษณุโลก 65000</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://www.nu.ac.th/" target="_blank" rel="noopener">มหาวิทยาลัยนเรศวร</a></li>
+      <li><a href="https://www.graduate.nu.ac.th/th" target="_blank" rel="noopener">บัณฑิตวิทยาลัย</a></li>
+      <li><a href="https://www.nuscholarship.nu.ac.th/" target="_blank" rel="noopener">เว็บไซต์ต้นฉบับ</a></li>
+      <li><a href="https://www.nuscholarship.nu.ac.th/page-table2/" target="_blank" rel="noopener">รายการประกาศ</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
