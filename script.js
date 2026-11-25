@@ -1,5 +1,7 @@
 const SOURCE = "https://www.nuscholarship.nu.ac.th/";
 const LIST = "https://www.nuscholarship.nu.ac.th/page-table2/";
+const EXCHANGE = "https://www.nuscholarship.nu.ac.th/student-exchange/";
+const CONFERENCE = "https://www.nuscholarship.nu.ac.th/academic-conference/";
 
 /* ข้อมูลประกาศ — เพิ่ม/แก้ไขรายการได้ที่นี่ (cat ต้องตรงกับ key ใน labels) */
 const data = [
@@ -12,6 +14,9 @@ const data = [
   {title: "แบบฟอร์มสมัครทุนและเอกสารประกอบ", cat: "documents", desc: "รวมจุดเข้าถึงแบบฟอร์มสมัครทุน แบบฟอร์มสรุปโครงร่างวิทยานิพนธ์ และเอกสารประกอบ", tags: ["แบบฟอร์ม", "ดาวน์โหลด"], status: "เอกสาร", url: LIST},
   {title: "แหล่งทุนภายในและแหล่งทุนภายนอก", cat: "scholarship", desc: "ค้นหาข่าวทุนจากหน่วยงานภายในมหาวิทยาลัยและหน่วยงานผู้ให้ทุนภายนอก", tags: ["ทุนภายใน", "ทุนภายนอก"], status: "รวมแหล่งทุน", url: SOURCE}
 ];
+
+data.filter(item => item.cat === "exchange").forEach(item => { item.url = EXCHANGE; });
+data.filter(item => item.cat === "conference").forEach(item => { item.url = CONFERENCE; });
 
 const labels = {
   scholarship: "ทุนการศึกษา",
@@ -115,3 +120,44 @@ function toast(msg) {
 }
 
 render();
+
+const carousel = document.querySelector(".research-carousel");
+if (carousel) {
+  const slides = [...carousel.querySelectorAll(".research-slide")];
+  const dots = [...carousel.querySelectorAll(".carousel-dot")];
+  let slideIndex = 0;
+  let slideTimer;
+
+  function showSlide(index) {
+    slideIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const activeSlide = i === slideIndex;
+      slide.classList.toggle("is-active", activeSlide);
+      slide.setAttribute("aria-hidden", String(!activeSlide));
+      slide.tabIndex = activeSlide ? 0 : -1;
+      slide.style.transform = `translateX(${(i - slideIndex) * 100}%)`;
+      dots[i].classList.toggle("is-active", activeSlide);
+      dots[i].setAttribute("aria-pressed", String(activeSlide));
+    });
+  }
+
+  function stopSlideTimer() { clearInterval(slideTimer); }
+  function startSlideTimer() {
+    stopSlideTimer();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      slideTimer = setInterval(() => showSlide(slideIndex + 1), 6500);
+    }
+  }
+
+  carousel.querySelector(".carousel-prev").addEventListener("click", () => { showSlide(slideIndex - 1); startSlideTimer(); });
+  carousel.querySelector(".carousel-next").addEventListener("click", () => { showSlide(slideIndex + 1); startSlideTimer(); });
+  dots.forEach((dot, i) => dot.addEventListener("click", () => { showSlide(i); startSlideTimer(); }));
+  carousel.addEventListener("mouseenter", stopSlideTimer);
+  carousel.addEventListener("mouseleave", startSlideTimer);
+  carousel.addEventListener("focusin", stopSlideTimer);
+  carousel.addEventListener("focusout", event => {
+    if (!carousel.contains(event.relatedTarget)) startSlideTimer();
+  });
+  showSlide(0);
+  startSlideTimer();
+}
